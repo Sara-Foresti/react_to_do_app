@@ -2,8 +2,16 @@ import React from 'react';
 
 class Task extends React.Component {
 	render() {
+		const { details } = this.props;
+		const statusDone = details.status === 'completed';
+		const statusIcon = statusDone ? <i className="far fa-check-circle"></i> : <i className="far fa-circle"></i>;
 		return (
-			<div className="task"><i className="far fa-check-circle"></i>This is a task</div>
+			<li className="task">
+				<span className="status">
+					{ statusIcon }
+				</span>
+			  { details.desc }
+			</li>
 		)
 	}
 }
