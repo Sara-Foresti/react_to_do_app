@@ -2,6 +2,9 @@ import React from 'react';
 
 class AddTaskForm extends React.Component {
 	// here create a task with all its details, including ID
+	// we need to add this task to its list tasks key
+	// so probably addTask will become a method of TaskList, not the App
+	// as UPDATE LIST, as initially tasks is an 'empty' property of TaskList
 
 	// React 16.3 ref creation
 	constructor() {
@@ -15,20 +18,15 @@ class AddTaskForm extends React.Component {
 
 	createTask(event) {
 		event.preventDefault();
-		console.log('task created');
 
 		const newTask = {
 			id: Date.now(),
 			desc: this.desc.current.value, // need a reference to get the value
 			status: this.status.current.value
 		}
-
-		// what do we do with our new task?
-		// we send it to the state, passing it to a method
-		// defined in the state and passed to AddTaskForm
-		// but AddTaskForm is rendered inside TaskList...
-		console.log(newTask);
-		this.props.addTask(newTask);
+		console.log('Props: ', this.props);
+		this.props.updateListTasks(newTask, this.props.listId);
+		//console.log('list id in CREATE TASK: ', this.props.listId);
 	}
 
 	render() {

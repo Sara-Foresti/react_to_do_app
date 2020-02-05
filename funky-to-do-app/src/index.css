@@ -1,4 +1,6 @@
 @import './css/components/App.css';
+@import './css/components/AddTaskForm.css';
+
 
 /* General styling*/
 * {
